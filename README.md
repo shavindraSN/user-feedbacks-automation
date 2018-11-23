@@ -15,14 +15,32 @@ This application is used AWS commonly known **Scenario 2** setup
 ### 2. Pre-Requisites and setup
 1. Clone this repository
 2. Mac or Linux OS with Bash support
+3. Terraform installed and added to Path Variable
 3. AWS Account
 4. IAM user with Access key and Secret Key
-5. Add your Access keys and Secret Keys to **terraform.tfvars** file
-6. Plan the automation. Run following command inside the **user-feedbacks-automation** directory
+5. Create a folder and name it **tfvars**
+6. Create terraform.tfvars file inside directory created above and paste following content
+```
+aws_access_key = "xxxxxxxxxxxxxxxxx"
+aws_secret_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+private_key_path = "~/Path/to/MyKey.pem"
+
+db_name = "userfeedbacks"
+db_username = "root"
+db_password = "xxxxxxxx"
+
+s3_bucket = "user-feedbacks-shavindra"
+app_version = "0.0.1"
+app_repo = "https://github.com/shavindraSN/user-feedbacks.git"
+app_name = "user-feedbacks"
+```
+7. Add your Access keys and Secret Keys to **terraform.tfvars** file
+8. Change the Path to key file 
+9. Plan the automation. Run following command inside the **user-feedbacks-automation** directory
 ```console
 foo@bar:user-feedbacks-automation $ terraform plan  --var-file="../tfvars/terraform.tfvars"
 ```
-7. Apply the changes
+10. Apply the changes
 ```console
 foo@bar:user-feedbacks-automation $ terraform apply  --var-file="../tfvars/terraform.tfvars" -auto-approve
 ```
